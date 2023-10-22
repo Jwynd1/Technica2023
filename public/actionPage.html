@@ -7,7 +7,7 @@
             margin: 0;
             padding: 0;
             font-family: Impact, fantasy;
-            background-color: #757f49;
+            transition: background-color 0.5s;
         }
 
         .hero {
@@ -34,7 +34,7 @@
             justify-content: space-around;
         }
         .buttons button {
-            font-family: "Impact, fantasy"; 
+            font-family: "Impact, fantasy";
             font-size: 20px;
             font-weight: bold;
             color: #fff;
@@ -53,11 +53,12 @@
         }
 
         .buttons .first-third {
-            margin-right: -50%;
+            margin-right: 20%;
         }
 
         .navbar {
             background-color: #3d3b2c;
+            opacity: 0;
             overflow: hidden;
         }
 
@@ -68,18 +69,19 @@
             padding: 0;
             display: flex;
             justify-content: space-evenly;
+            width: 100%;
         }
 
         .navbar li {
             margin: 0;
-            width: 33%;
             flex-grow: 1;
+            text-align: center;
+            width: 33%;
         }
 
         .navbar a {
             display: block;
-            color: #906b16;
-            text-align: center;
+            color: white;
             padding: 6px 12px;
             text-decoration: none;
         }
@@ -98,19 +100,19 @@
             background-color: #a7bbac;
             background-size: 10px 10px;
             justify-content: space-around;
-            font-family: "Impact, fantasy"; 
+            font-family: "Impact, fantasy";
             font-size: 20px;
             font-weight: 600;
             color: black;
             background-color: #a7bbac;
             border: none;
-            padding: 10px 30px;
+            padding: 10px 170px;
             border-radius: 25px;
             cursor: pointer;
             opacity: 0.8;
-            margin-top: -40px;
         }
-        .last-button last-button:hover {
+
+        .last-button:hover {
             background-color: #665329;
             opacity: 1;
         }
@@ -124,50 +126,318 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
             pointer-events: none;
         }
+
+        .logo {
+            position: fixed;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            transition: opacity 0.5s, top 0.5s;
+            background-color: #3d3b2c;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+        #DonateandBePartofTheChange {
+            background-color: #a7bbac;
+            font-size: 10px;
+        }
+        #VolunteerYourTime {
+            background-color: #3d3b2c;
+            font-size: 10px;
+        }
+
+        #StarsAndAwards {
+            background-color: #a7bbac;
+            font-size: 10px;
+        }
+
+        .hero, .navbar, .logo, #DonateandBePartofTheChange, #VolunteerYourTime, #StarsAndAwards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        #scrollToTopButton {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #a7bbac;
+            color: #3d3b2c;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+        }
+
+        #scrollToTopButton:hover {
+            background-color: #665329;
+            color: #fff;
+        }
+        .donation-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: -10px;
+        }
+
+        .donation-buttons button {
+            font-family: "Impact, fantasy";
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #665329;
+            border: none;
+            padding: 10px 90px;
+            border-radius: 20px;
+            cursor: pointer;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .donation-buttons button:hover {
+            background-color: #665329;
+            opacity: 1;
+        }
+        .flip-cards {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-left: 40px;
+            background-color: #a7bbac;
+            padding-bottom: 50px;
+        }
+
+        .flip-card {
+            width: 250px;
+            height: 250px;
+            perspective: 1000px;
+            overflow: hidden;
+            
+            border-radius: 15px;
+        }
+
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+            background-color: #665329;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front img,
+        .flip-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    
     </style>
+    <script src="hello-hedera-js-sdk/index.js"></script>
+    <script> 
+    function insertText(){
+    document.getElementById('donationTotal').InnerHTML = "hello"}
+    </script>
 </head>
-<body>
+<body onload="insertText()">
     <div class="hero">
         <h1>Make a Difference</h1>
         <div class="fade-background"></div>
         <div class="buttons">
-            <button class="first-third" onclick="scrollToSection('Donate and Be Part of The Change')">Donate</button>
-            <button class="second-third" onclick="scrollToSection('Volunteer Your Time')">Volunteer</button>
+            <button class="first-third" onclick="scrollToSection('DonateandBePartofTheChange')"> Donate</button>
+            <button class="second-third" onclick="scrollToSection('VolunteerYourTime')"> Volunteer</button>
         </div>
         <div class="contribute-background">
             <br></br>
             <br></br>
         </div>
-        <button class="last-button" onclick="scrollToSection('Contribute and Recieve Back: Learn About Stars and Awards')">Contribute and Recieve Back: learn About stars and awards</button>
+        <button class="last-button" onclick="scrollToSection('StarsAndAwards')">Contribute and Receive Back: Learn About Stars and Awards</button>
     </div>
+    <img src="logo.png" alt="Your Logo" class="logo">
     <div class="navbar">
         <ul>
-            <li><a href="#mainPage.html">About</a></li>
+            <li><a href="#aboutPage.html">About</a></li>
             <li><a href="#actionPage.html">Make a Difference</a></li>
-            <li><a href="#Sponsors.html">Sponsors</a></li>
+            <li><a href="#sponsors.html">Sponsors</a></li>
         </ul>
     </div>
 
-    <div id="Donate and Be Part of The Change">
+    <div id="DonateandBePartofTheChange">
         <h2>Donate and Be Part of The Change</h2>
-        <p>This is the content of Section 1.</p>
+        <div class="donation-buttons">
+            <button onclick="donateAmount(5)">$5</button>
+            <button onclick="donateAmount(10)">$10</button>
+            <button onclick="donateAmount(25)">$25</button>
+            <button onclick="donateAmount(50)">$50</button>
+            <button onclick="donateAmount(100)">$100</button>
+            <button id="otherAmountButton" onclick="showOtherAmountInput()">Other Amount</button>
+        </div>
+        <div id="otherAmountInput" style="display: none;">
+            <input type="number" id="customAmount" placeholder="Enter custom amount" />
+            <button onclick="donateCustomAmount()">Donate</button>
+        </div>
+        <br></br>
+        <p> Set Up Recurring Donations Through Organizations</p>
     </div>
 
-    <div id="Volunteer Your Time">
+    <div class="flip-cards">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="1.png" alt="Square 1 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="2.png" alt="Square 1 Back" />
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="3.png" alt="Square 2 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="4.png" alt="Square 2 Back" />
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="5.png" alt="Square 3 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="6.png" alt="Square 3 Back" />
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="7.png" alt="Square 4 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="8.png" alt="Square 4 Back" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="VolunteerYourTime">
         <h2>Volunteer Your Time</h2>
-        <p>This is the content of Section 2.</p>
+        <p> Take up an opportunity to Volunteer</p>
     </div>
-
-    <div id="Stars & Awards">
+    <div class="flip-cards">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="logo.png" alt="Square 1 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="logo.png" alt="Square 1 Back" />
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="logo.png" alt="Square 2 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="logo.png" alt="Square 2 Back" />
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="logo.png" alt="Square 3 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="logo.png" alt="Square 3 Back" />
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="logo.png" alt="Square 4 Front" />
+                </div>
+                <div class="flip-card-back">
+                    <img src="logo.png" alt="Square 4 Back" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="StarsAndAwards">
         <h2>Stars & Awards</h2>
-        <p>This is the content of Section 3.</p>
+        <p>You have donated:<p id="donationTotal"></p></p>
+        <p>You have volunteered for: 10 hrs</p>
+        <p> You have earned 3 Stars! </p>
+        <p>Your Place on the leaderboard is 2nd</p>
+        <!-- add leadership board here-->
+        <p>To alleviate the impact of climate changeof our planet, we need 300 billion dollars by 2030</p>
+        <p> Only 6% has been dontaed so far</p>
+        <p>Take action and watch the demanded amount drop after your contribution! </p>
+        <!-- formula for this is 280 000 000 000 - (amount of money donated through our website) -  (40 times hrs of volunteer)-->
+
+        <p>Get something in return! </p>
+        <!-- three boxes with the star traded items
+          - points of each donation or volunteering (1dollar is 50 points, 1hr is 200 points)-->
     </div>
 
     <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.querySelector('.navbar').style.opacity = 1;
+                document.querySelector('.logo').style.opacity = 1;
+                document.querySelector('.logo').style.top = '0';
+                document.body.style.backgroundColor = '#757f49';
+            } else {
+                document.querySelector('.navbar').style.opacity = 0;
+                document.querySelector('.logo').style.opacity = 0;
+                document.querySelector('.logo').style.top = '-50px';
+                document.body.style.backgroundColor = '#3d3b2c';
+            }
+        }
+
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             section.scrollIntoView({ behavior: "smooth" });
         }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
+    <button onclick="scrollToTop()" id="scrollToTopButton" title="Go to top">↑</button>
 </body>
 </html>
